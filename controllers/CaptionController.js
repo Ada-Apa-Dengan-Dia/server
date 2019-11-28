@@ -1,4 +1,4 @@
-const axiosCaption = require('../helpers/axiosCaption')
+const axiosCaption = require('../APIs/axiosCaption')
 
 class CaptionController{
     static detectLanguage(req,res,next){
