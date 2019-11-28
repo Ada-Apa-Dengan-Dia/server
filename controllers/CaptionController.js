@@ -19,7 +19,7 @@ class CaptionController{
                 text,
                 lang
             }
-            return axiosYandex({
+            return axiosCaption({
                 method : "POST",
                 url : "/translate",
                 params,
