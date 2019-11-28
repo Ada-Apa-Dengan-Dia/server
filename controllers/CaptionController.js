@@ -3,7 +3,7 @@ const axiosCaption = require('../helpers/axiosCaption')
 class CaptionController{
     static detectLanguage(req,res,next){
         const text = req.body.text
-        const params = {
+        let params = {
             key : process.env.API_KEY_YD,
             text
         }
@@ -11,6 +11,19 @@ class CaptionController{
             method : "POST",
             url : "/detect",
             params,
+        })
+        .then((response)=>{
+            const lang = `${response.data.lang}-en`
+            params = {
+                key : process.env.API_KEY_YD,
+                text,
+                lang
+            }
+            return axiosYandex({
+                method : "POST",
+                url : "/translate",
+                params,
+            })
         })
         .then((response)=>{
             res.status(200).json(response.data)
