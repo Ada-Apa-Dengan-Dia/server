@@ -6,6 +6,7 @@ pd.apiKey = process.env.API_KEY_PICTURE;
 
 class PictureController {
     static getData(req,res,next){
+        console.log('mnasukkkkkk conbtroller');
         // const file_url=req.body.url;
         let type
         let link=req.body.url
