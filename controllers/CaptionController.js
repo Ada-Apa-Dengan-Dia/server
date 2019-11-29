@@ -21,7 +21,7 @@ class CaptionController{
 
     static translateLanguange(req, res, next) {
         const { language } = req.body
-        const lang = `${lang}-en`
+        const lang = `${language}-en`
             params = {
                 key : process.env.API_KEY_YD,
                 text,
