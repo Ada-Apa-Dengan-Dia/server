@@ -1,4 +1,4 @@
-const axiosWord = require('../helpers/axiosWord')
+const axiosWord = require('../APIs/axiosWord')
 const FormData = require('form-data')
 
 class EmotionAnalysis{
