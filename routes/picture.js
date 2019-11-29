@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const pictureController = require('../controllers/pictureController')
+const pictureController = require('../controllers/PictureController')
 
 
 router.post('/',pictureController.getData)
