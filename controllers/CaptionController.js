@@ -1,6 +1,7 @@
 const axiosCaption = require('../APIs/axiosCaption')
 
 class CaptionController{
+
     static detectLanguage(req,res,next){
         const text = req.body.text
         let params = {
@@ -12,23 +13,29 @@ class CaptionController{
             url : "/detect",
             params,
         })
-        .then((response)=>{
-            const lang = `${response.data.lang}-en`
+            .then(({ data })=>{
+                res.status(200).json(data)
+            })
+            .catch(next)
+    }
+
+    static translateLanguange(req, res, next) {
+        const { language } = req.body
+        const lang = `${lang}-en`
             params = {
                 key : process.env.API_KEY_YD,
                 text,
                 lang
             }
-            return axiosCaption({
-                method : "POST",
-                url : "/translate",
-                params,
+        axiosCaption({
+            method : "POST",
+            url : "/translate",
+            params,
+        })
+            .then(({ data }) => {
+                res.status(200).json(data)
             })
-        })
-        .then((response)=>{
-            res.status(200).json(response.data)
-        })
-        .catch(next)
+            .catch(next)
     }
 }
 module.exports = CaptionController
